@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
 - gotk-components.yaml
 - root-ks.yaml
+- flux-kustomizations/my-namespace.yaml
