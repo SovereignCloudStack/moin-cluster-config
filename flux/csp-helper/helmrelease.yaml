@@ -1,0 +1,15 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: csp-helper
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: ./
+      sourceRef:
+        kind: GitRepository
+        name: openstack-csp-helper
+      version: =0.6.0
+  interval: 10m0s

@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
 - gotk-components.yaml
 - root-ks.yaml
-- flux-kustomizations/my-namespace.yaml
+- flux-kustomizations/csp-helper.yaml
 - flux-kustomizations/kaas-playground0.yaml
