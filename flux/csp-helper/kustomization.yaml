@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
 - gitrepo.yaml
 - helmrelease.yaml
+- secret.yaml

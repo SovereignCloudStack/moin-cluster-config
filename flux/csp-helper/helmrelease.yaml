@@ -5,6 +5,9 @@ metadata:
   name: csp-helper
   namespace: flux-system
 spec:
+  install:
+    createNamespace: true
+  targetNamespace: kaas-playground1
   chart:
     spec:
       chart: ./
@@ -13,3 +16,6 @@ spec:
         name: openstack-csp-helper
       version: =0.6.0
   interval: 10m0s
+  valuesFrom:
+    - kind: Secret
+      name: secret-values
