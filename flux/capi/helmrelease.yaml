@@ -19,7 +19,7 @@ spec:
           MachinePool: true
           ClusterResourceSet: true
           RuntimeSDK: false
-          MachineSetPreflightChecks: false           │
+          MachineSetPreflightChecks: false
   chart:
     spec:
       chart: cluster-api-operator
