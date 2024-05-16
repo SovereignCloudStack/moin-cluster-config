@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: capi
+    - name: capi-operator
   install:
     createNamespace: true
   targetNamespace: kaas-playground1

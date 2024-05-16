@@ -26,5 +26,5 @@ spec:
     createNamespace: true
     remediation:
       retries: 5
-  interval: 1m0s
+  interval: 3m0s
   targetNamespace: capi-operator-system
