@@ -9,6 +9,8 @@ spec:
     - name: capi-operator
   install:
     createNamespace: true
+    remediation:
+      retries: -1
   targetNamespace: kaas-playground1
   chart:
     spec:
