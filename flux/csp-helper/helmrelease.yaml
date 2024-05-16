@@ -5,6 +5,8 @@ metadata:
   name: csp-helper
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: capi
   install:
     createNamespace: true
   targetNamespace: kaas-playground1

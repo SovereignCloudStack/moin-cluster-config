@@ -8,8 +8,6 @@ spec:
   interval: 10m0s
   path: ./flux/csp-helper
   prune: true
-  dependsOn:
-    - name: capi
   sourceRef:
     kind: GitRepository
     name: flux-system
