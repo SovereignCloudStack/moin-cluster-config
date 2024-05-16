@@ -5,3 +5,4 @@ resources:
 - root-ks.yaml
 - flux-kustomizations/csp-helper.yaml
 - flux-kustomizations/capi.yaml
+- flux-kustomizations/cert-manager.yaml
