@@ -8,6 +8,10 @@ metadata:
 spec:
   values:
     infrastructure: openstack
+    manager:
+      featureGates:
+        core:
+          ClusterTopology: true
   chart:
     spec:
       chart: cluster-api-operator
