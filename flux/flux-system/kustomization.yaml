@@ -4,3 +4,4 @@ resources:
 - gotk-components.yaml
 - root-ks.yaml
 - flux-kustomizations/csp-helper.yaml
+- flux-kustomizations/capi.yaml
