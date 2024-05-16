@@ -6,10 +6,12 @@ metadata:
 spec:
   install:
     remediation:
-      retries: 3
+      retries: 5
     createNamespace: true
   targetNamespace: cert-manager
   interval: 1m
+  test:
+    enable: true
   chart:
     spec:
       chart: cert-manager
