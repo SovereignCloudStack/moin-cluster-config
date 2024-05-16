@@ -25,6 +25,6 @@ spec:
   install:
     createNamespace: true
     remediation:
-      retries: 5
+      retries: -1
   interval: 3m0s
   targetNamespace: capi-operator-system
