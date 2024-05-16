@@ -10,11 +10,16 @@ spec:
   dependsOn:
     - name: cert-manager
   values:
-    infrastructure: openstack
+    infrastructure: "openstack:v0.10.2"
+    core: "cluster-api:v1.7.2"
     manager:
       featureGates:
         core:
           ClusterTopology: true
+          MachinePool: true
+          ClusterResourceSet: true
+          RuntimeSDK: false
+          MachineSetPreflightChecks: false           │
   chart:
     spec:
       chart: cluster-api-operator
