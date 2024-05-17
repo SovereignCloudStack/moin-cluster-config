@@ -11,6 +11,7 @@ spec:
     - name: cert-manager
   values:
     infrastructure: "openstack:v0.10.2"
+    addon: "helm:v0.2.2"
     core: "cluster-api:v1.7.2"
     manager:
       featureGates:
