@@ -10,6 +10,8 @@ spec:
     createNamespace: true
   targetNamespace: cert-manager
   interval: 1m
+  values:
+    installCRDs: true
   test:
     enable: true
   chart:
