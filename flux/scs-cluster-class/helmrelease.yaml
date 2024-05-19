@@ -16,5 +16,6 @@ spec:
       chart: ./providers/openstack/scs/1-27/cluster-class
       sourceRef:
         kind: GitRepository
-        name: scs-cluster-class
+        name: cluster-stacks
+      version: "=v3"
   interval: 10m0s
