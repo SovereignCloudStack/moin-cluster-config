@@ -15,6 +15,10 @@ spec:
     core: "cluster-api:v1.7.2"
     manager:
       featureGates:
+        kubeadm:
+          MachinePool: true
+          ClusterTopology: true
+          KubeadmBootstrapFormatIgnition: false
         core:
           ClusterTopology: true
           MachinePool: true
