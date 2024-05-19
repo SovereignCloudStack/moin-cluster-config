@@ -13,7 +13,10 @@ kubectl create secret generic -n flux-system secret-values --from-file=values.ya
 # kubectl create secret generic -n flux-system secret-values --from-file=values.yaml=my-clouds.yaml
 #
 # 3. use the included (encrypted) valid clouds.yaml (works only if you have access to one of the private-keys the file is encrypted with)
-# Apply GPG private-key (used to decrypt secrets)
+# yq -i '.resources += ["secret.yaml"]' ../flux/csp-helper/kustomization.yaml
+# yq -i '.spec.decryption.provider="sops" | .spec.decryption.secretRef.name="sops-gpg"' ../flux/flux-system/flux-kustomizations/csp-helper.yaml
+# git add ../flux/csp-helper/kustomization.yaml ../flux/flux-system/flux-kustomizations/csp-helper.yaml>
+# git commit -s -m "Use sops to use the encrypted clouds.yaml"
 # gpg -d cluster-private-key.gpg | kubectl apply -f -
 
 # Apply initial flux-config (gitrepo and root-kustomization)
