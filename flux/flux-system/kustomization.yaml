@@ -6,3 +6,4 @@ resources:
 - flux-kustomizations/csp-helper.yaml
 - flux-kustomizations/capi.yaml
 - flux-kustomizations/cert-manager.yaml
+- flux-kustomizations/scs-cluster-class.yaml

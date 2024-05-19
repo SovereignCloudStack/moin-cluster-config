@@ -1,0 +1,20 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: scs-cluster-class
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: capi-operator
+  install:
+    remediation:
+      retries: -1
+  targetNamespace: kaas-playground1
+  chart:
+    spec:
+      chart: ./providers/openstack/scs/1-27/cluster-class
+      sourceRef:
+        kind: GitRepository
+        name: scs-cluster-class
+  interval: 10m0s
