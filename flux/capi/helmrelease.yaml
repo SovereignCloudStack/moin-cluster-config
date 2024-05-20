@@ -9,22 +9,6 @@ spec:
   persistentClient: false # hopefully this mimics --wait
   dependsOn:
     - name: cert-manager
-  values:
-    infrastructure: "openstack:v0.10.2"
-    addon: "helm:v0.2.2"
-    core: "cluster-api:v1.7.2"
-    manager:
-      featureGates:
-        kubeadm:
-          MachinePool: true
-          ClusterTopology: true
-          KubeadmBootstrapFormatIgnition: false
-        core:
-          ClusterTopology: true
-          MachinePool: true
-          ClusterResourceSet: true
-          RuntimeSDK: false
-          MachineSetPreflightChecks: false
   chart:
     spec:
       chart: cluster-api-operator
