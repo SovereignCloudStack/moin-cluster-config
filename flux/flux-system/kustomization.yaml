@@ -8,3 +8,4 @@ resources:
 - flux-kustomizations/capi-config.yaml
 - flux-kustomizations/cert-manager.yaml
 - flux-kustomizations/scs-cluster-class.yaml
+- flux-kustomizations/kyverno.yaml
