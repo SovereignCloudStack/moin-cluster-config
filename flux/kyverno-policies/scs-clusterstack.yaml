@@ -33,7 +33,7 @@ spec:
           names: 
             - "*tenant*"
     generate:
-      apiVersion: clusterstack.x-k8s.io
+      apiVersion: clusterstack.x-k8s.io/v1alpha1
       kind: ClusterStack
       name: scs-cluster-stack
       namespace: "{{request.object.metadata.name}}"
