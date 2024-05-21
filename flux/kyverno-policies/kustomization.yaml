@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
   - scs-clusterstack.yaml
   - k8s-version.yaml
-  - namespace.yaml
