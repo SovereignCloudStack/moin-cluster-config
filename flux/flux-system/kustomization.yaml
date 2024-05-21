@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
 - gotk-components.yaml
 - root-ks.yaml
-- flux-kustomizations/csp-helper.yaml
 - flux-kustomizations/capi.yaml
 - flux-kustomizations/capi-config.yaml
 - flux-kustomizations/cert-manager.yaml
