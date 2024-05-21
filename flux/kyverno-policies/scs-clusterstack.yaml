@@ -1,0 +1,33 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: generate-cs-for-each-tenant
+  annotations:
+    policies.kyverno.io/title: Generate SCS tenant resources
+spec:
+  rules:
+  - name: generate-clusterstack
+    match:
+      any:
+      - resources:
+          kinds:
+          - Namespace
+          names: 
+            - "*tenant*"
+    generate:
+      apiVersion: clusterstack.x-k8s.io
+      kind: ClusterStack
+      name: scs-cluster-stack
+      namespace: "{{request.object.metadata.name}}"
+      data:
+        metadata:
+          name: scs-cluster-stack
+          namespace: "{{request.object.metadata.name}}"
+        spec:
+          provider: openstack
+          name: scs
+          kubernetesVersion: "1.27"
+          channel: stable
+          autoSubscribe: false
+          versions:
+            - v4

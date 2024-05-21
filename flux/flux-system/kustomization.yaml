@@ -7,5 +7,6 @@ resources:
 - flux-kustomizations/capi.yaml
 - flux-kustomizations/capi-config.yaml
 - flux-kustomizations/cert-manager.yaml
-- flux-kustomizations/scs-cluster-class.yaml
+- flux-kustomizations/kyverno-policies.yaml
 - flux-kustomizations/kyverno.yaml
+- flux-kustomizations/cso.yaml
