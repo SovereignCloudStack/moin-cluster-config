@@ -19,5 +19,18 @@ spec:
     createNamespace: true
     remediation:
       retries: -1
+  values:
+    backgroundController:
+      rbac:
+        clusterRole:
+          extraResources:
+            - apiGroups:
+              - clusterstack.x-k8s.io
+              resources:
+              - clusterstacks
+              verbs:
+              - create
+              - update
+              - delete
   interval: 3m0s
   targetNamespace: kyverno
