@@ -1,0 +1,25 @@
+---
+# TODO pin CAPI controller, CAPO controller versions
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: capi-operator
+  namespace: flux-system
+spec:
+  persistentClient: false # hopefully this mimics --wait
+  dependsOn:
+    - name: cert-manager
+  chart:
+    spec:
+      chart: cluster-api-operator
+      reconcileStrategy: ChartVersion
+      version: 0.10.1
+      sourceRef:
+        kind: HelmRepository
+        name: capi
+  install:
+    createNamespace: true
+    remediation:
+      retries: -1
+  interval: 3m0s
+  targetNamespace: capi-operator-system

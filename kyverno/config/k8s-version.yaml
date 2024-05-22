@@ -1,0 +1,20 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: enforce-supported-k8s-version
+spec:
+  validationFailureAction: Enforce
+  rules:
+    - name: check-for-supported-k8s-version
+      match:
+        any:
+          - resources:
+              kinds:
+                - Cluster
+      validate:
+        deny:
+          conditions:
+            all:
+            - key: "{{ semver_compare( trim_prefix('{{ request.object.spec.topology.version }}', 'v'),'1.27.12 || 1.28.9 || 1.29.2 || 1.29.3 || 1.30.0') }}"
+              operator: Equals
+              value: false
