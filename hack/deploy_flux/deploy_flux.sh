@@ -2,6 +2,7 @@
 # Create namespace for the CSO
 kubectl create namespace cso-system
 
+# Create the config for the CSO
 kubectl create secret generic cso-cluster-stack-variables -n cso-system \
     --from-literal=git-access-token=$GITHUB_TOKEN \
     --from-literal=git-org-name=SovereignCloudStack \
