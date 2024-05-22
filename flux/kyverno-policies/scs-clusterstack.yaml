@@ -25,6 +25,7 @@ spec:
           name: scs-cluster-stack
           namespace: "{{request.object.metadata.name}}"
         spec:
+          noProvider: true
           provider: openstack
           name: scs
           kubernetesVersion: "1.27"
