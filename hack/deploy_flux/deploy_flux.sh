@@ -9,7 +9,7 @@ kubectl create secret generic cso-cluster-stack-variables -n cso-system \
     --from-literal=git-repo-name=cluster-stacks
 
 # Install flux and flux-system namespace
-kubectl apply -f ../flux/flux-system/gotk-components.yaml
+kubectl apply -f ../../flux/installation/flux-installation.yaml
 
 # Apply initial flux-config (gitrepo and root-kustomization)
-kubectl apply  -f ../flux/flux-system/root-ks.yaml
+kubectl apply  -f ../../flux/config/flux-config-ks.yaml

@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- flux-installation-ks.yaml
+- flux-config-ks.yaml
+- capi-installation-ks.yaml
+- capi-config-ks.yaml
+- cert-manager-installation-ks.yaml
+- kyverno-installation-ks.yaml
+- kyverno-config-ks.yaml
+- cso-installation-ks.yaml
+- capi-visualizer-installation-ks.yaml
