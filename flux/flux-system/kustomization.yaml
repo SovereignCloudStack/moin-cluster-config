@@ -9,3 +9,4 @@ resources:
 - flux-kustomizations/kyverno-policies.yaml
 - flux-kustomizations/kyverno.yaml
 - flux-kustomizations/cso.yaml
+- flux-kustomizations/capi-visualizer.yaml
