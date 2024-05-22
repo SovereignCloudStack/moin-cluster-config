@@ -16,6 +16,7 @@ spec:
           names: 
             - "*tenant*"
     generate:
+      synchronize: true
       apiVersion: clusterstack.x-k8s.io/v1alpha1
       kind: ClusterStack
       name: scs-cluster-stack
