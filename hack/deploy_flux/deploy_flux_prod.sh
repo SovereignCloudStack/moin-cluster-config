@@ -10,3 +10,6 @@ gpg -d cluster-private-key.gpg | kubectl apply -f -
 
 # Apply initial flux-config (gitrepo and root-kustomization)
 kubectl apply  -f ../../flux/config/flux-config-ks.yaml
+
+# Apply additional flux-config (prod-only)
+kubectl apply  -f ../../prod-additions/flux/config/prod-additions-flux-config-ks.yaml
