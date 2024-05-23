@@ -6,6 +6,7 @@ metadata:
   name: capi-operator
   namespace: flux-system
 spec:
+  wait: true
   persistentClient: false # hopefully this mimics --wait
   dependsOn:
     - name: cert-manager

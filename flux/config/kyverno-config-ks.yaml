@@ -5,6 +5,7 @@ metadata:
   name: kyverno-config
   namespace: flux-system
 spec:
+  wait: true
   dependsOn:
     - name: cso-installation
     - name: capi-installation
