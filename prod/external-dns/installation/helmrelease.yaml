@@ -21,6 +21,6 @@ spec:
       retries: -1
   valuesFrom:
   - kind: Secret
-    name: secret-values
+    name: external-dns-secret-values
   interval: 3m0s
   targetNamespace: external-dns
