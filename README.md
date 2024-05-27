@@ -13,7 +13,7 @@ export GITHUB_TOKEN=<GITHUB pat>
 
 The following script will use the GitHub token to create a secret. Further, flux is deployed and configured with a pointer to this repo. This will deploy and configure all relevant components.
 ```
-cd deploy_flux
+cd hack/deploy_flux
 sh deploy_flux.sh
 ```
 
