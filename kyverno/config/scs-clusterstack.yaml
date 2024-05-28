@@ -14,7 +14,7 @@ spec:
           kinds:
           - Namespace
           names: 
-            - "*tenant*"
+            - "kaas-playground*"
     generate:
       synchronize: true
       apiVersion: clusterstack.x-k8s.io/v1alpha1
@@ -34,3 +34,29 @@ spec:
           autoSubscribe: false
           versions:
             - v4
+  - name: generate-rolebinding
+    match:
+      any: 
+      - resources:
+          kinds:
+          - Namespace
+          names: 
+            - "kaas-playground*"
+    generate:
+      synchronize: true
+      apiVersion: rbac.authorization.k8s.io/v1
+      kind: RoleBinding
+      name: scs-tenant-rolebinding
+      namespace: "{{request.object.metadata.name}}"
+      data:
+        metadata:
+          name: scs-tenant-rolebinding
+          namespace: "{{request.object.metadata.name}}"
+        roleRef:
+          apiGroup: rbac.authorization.k8s.io
+          kind: ClusterRole
+          name: scs-tenant-clusterrole
+        subjects:
+        - apiGroup: rbac.authorization.k8s.io
+          kind: Group
+          name: scs-allow-playground-access
