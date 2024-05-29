@@ -34,7 +34,7 @@ spec:
           autoSubscribe: false
           versions:
             - v4
-  - name: generate-rolebinding
+  - name: generate-rolebinding-playground-general
     match:
       any: 
       - resources:
@@ -59,4 +59,4 @@ spec:
         subjects:
         - apiGroup: rbac.authorization.k8s.io
           kind: Group
-          name: scs-allow-playground-access
+          name: "oidcSovereignCloudStack:moin-cluster-all-playgrounds"
