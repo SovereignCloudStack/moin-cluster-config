@@ -1,0 +1,50 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kaas-playground0
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kaas-playground1
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kaas-playground2
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kaas-playground3
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kaas-playground4
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kaas-playground5
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kaas-playground6
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kaas-playground7
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kaas-playground8
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kaas-playground9
