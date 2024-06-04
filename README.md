@@ -14,7 +14,7 @@ export GITHUB_TOKEN=<GITHUB pat>
 The following script will use the GitHub token to create a secret. Further, flux is deployed and configured with a pointer to this repo. This will deploy and configure all relevant components.
 ```
 cd hack/deploy_flux
-sh deploy_flux.sh
+sh deploy_flux_dev.sh 
 ```
 
 Now it will take some time to reconcile all resources, you can either watch flux and kubernetes doing its work or continue with the next step.
