@@ -5,7 +5,7 @@ metadata:
   name: capi-installation
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 10s
   path: ./capi/installation
   prune: true
   sourceRef:

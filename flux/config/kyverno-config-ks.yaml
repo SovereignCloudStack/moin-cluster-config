@@ -10,7 +10,7 @@ spec:
     - name: cso-installation
     - name: capi-installation
     - name: kyverno-installation
-  interval: 1m0s
+  interval: 10s
   path: ./kyverno/config
   prune: true
   sourceRef:

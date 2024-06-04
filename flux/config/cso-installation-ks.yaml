@@ -7,7 +7,7 @@ metadata:
 spec:
   dependsOn:
     - name: cert-manager-installation
-  interval: 1m0s
+  interval: 10s
   path: ./cso/installation
   prune: true
   sourceRef:
