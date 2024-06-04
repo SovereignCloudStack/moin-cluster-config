@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: cert-manager
+    - name: cert-manager-installation
   interval: 1m0s
   path: ./cso/installation
   prune: true
