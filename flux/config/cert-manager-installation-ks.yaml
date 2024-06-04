@@ -16,3 +16,4 @@ spec:
     kind: HelmRelease
     name: cert-manager
     namespace: flux-system
+  timeout: 5m

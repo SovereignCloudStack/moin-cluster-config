@@ -16,3 +16,4 @@ spec:
     kind: HelmRelease
     name: capi-operator
     namespace: flux-system
+  timeout: 5m
