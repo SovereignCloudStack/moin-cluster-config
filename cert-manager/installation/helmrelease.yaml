@@ -9,7 +9,7 @@ spec:
       retries: 5
     createNamespace: true
   targetNamespace: cert-manager
-  interval: 1m
+  interval: 10s
   values:
     installCRDs: true
   test:
@@ -22,4 +22,4 @@ spec:
         kind: HelmRepository
         name: jetstack
         namespace: flux-system
-      interval: 1m
+      interval: 10s

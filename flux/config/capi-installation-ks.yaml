@@ -5,9 +5,15 @@ metadata:
   name: capi-installation
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 10s
   path: ./capi/installation
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
+  healthChecks:
+  - apiVersion: helm.toolkit.fluxcd.io/v2beta2
+    kind: HelmRelease
+    name: capi-operator
+    namespace: flux-system
+  timeout: 5m

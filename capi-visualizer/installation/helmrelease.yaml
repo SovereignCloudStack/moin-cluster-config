@@ -18,5 +18,5 @@ spec:
     createNamespace: true
     remediation:
       retries: -1
-  interval: 3m0s
+  interval: 10s
   targetNamespace: capi-visualizer

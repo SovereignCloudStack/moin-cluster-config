@@ -5,11 +5,12 @@ metadata:
   name: kyverno-config
   namespace: flux-system
 spec:
+  wait: true
   dependsOn:
     - name: cso-installation
     - name: capi-installation
     - name: kyverno-installation
-  interval: 1m0s
+  interval: 10s
   path: ./kyverno/config
   prune: true
   sourceRef:

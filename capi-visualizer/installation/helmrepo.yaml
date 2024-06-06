@@ -5,5 +5,5 @@ metadata:
   name: capi-visualizer
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 10s
   url: "https://jont828.github.io/cluster-api-visualizer/charts"

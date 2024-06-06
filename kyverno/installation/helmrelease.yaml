@@ -32,5 +32,5 @@ spec:
               - create
               - update
               - delete
-  interval: 3m0s
+  interval: 10s
   targetNamespace: kyverno
