@@ -9,7 +9,7 @@ roleRef:
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
-  name: "oidc:SovereignCloudStack:cluster-admins"
+  name: "oidcSovereignCloudStack:cluster-admins"
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
-  name: "oidc:SovereignCloudStack:vp06a"
+  name: "oidcSovereignCloudStack:vp06a"
