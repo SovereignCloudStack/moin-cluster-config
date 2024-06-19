@@ -8,4 +8,4 @@ resources:
   - prod-ingress-nginx-config-ks.yaml
   - prod-ingress-nginx-installation-ks.yaml
   - prod-k8s-config-ks.yaml
-  - prod-openstack-csp-helper-gitrepo.yaml
+  - prod-os-csp-helper-installation-ks.yaml
