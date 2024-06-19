@@ -1,23 +1,98 @@
 # moin-cluster-config
-This repo uses flux, cluster-API, cluster-stacks, kyverno and a few other components to turn a kubernetes cluster into a kubernetes service, where you can apply your desired clusters in Cluster-APIs format and retrieve kubeconfigs to access the deployed and managed clusters. This repo can be used as a quickly disposable dev-setup, a long running production cluster or, even shorter-lived, in a CI run.
+This repo uses flux, Cluster-API, cluster-stacks, Kyverno and a few other components to turn a Kubernetes cluster into a Kubernetes service, where you can apply your desired clusters in Cluster-APIs format and retrieve kubeconfigs to access the deployed and managed clusters. 
 
-To start you need a kubernetes cluster, you can do that for example with kind:
+The moin-cluster can be used as a quickly disposable dev-setup, a long running production cluster or, even shorter-lived, in a CI run.
+
+## Usage 
+
+If you want to use a deployed and managed version, you can access the moin-cluster with the following kubeconfig.
+You need to have `oidc-login` installed on your machine.
+
+`kubeconfig.yaml`
+
+```
+apiVersion: v1
+clusters:
+- cluster:
+    server: https://moin.k8s.scs.community
+  name: moin-cluster
+contexts:
+- context:
+    cluster: moin-cluster
+    user: oidc
+  name: moin-cluster
+current-context: moin-cluster
+kind: Config
+preferences: {}
+users:
+- name: oidc
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      args:
+      - oidc-login
+      - get-token
+      - --oidc-issuer-url=https://dex.k8s.scs.community
+      - --oidc-client-id=kubectl
+      - --oidc-extra-scope=groups
+      - --oidc-extra-scope=profile
+      command: kubectl
+      env: null
+      interactiveMode: IfAvailable
+      provideClusterInfo: false
+```
+
+## Setup
+
+The config is split into two use-cases, prod and dev.
+
+The dev is intended for those who want to start quickly on their local machine. List of components:
+
+- cert-manager
+- CAPI
+- CAPO
+- CSO
+- capi-visualizer
+
+The prod components include all of the above and additionally include:
+- external-dns
+- ingress controller
+- lets-encrypt issuer
+- RBAC roles
+- Kyverno policies
+- secrets for gx-scs, dns, github
+- pre-deployed namespaces with secrets
+
+### Development setup
+
+To start you need a Kubernetes cluster, you can do that for example with kind:
 ```
 kind create cluster
 ```
 
-Next you need to have a GitHub token. The token will be used by the CSO to fetch GitHub-Releases that contain the cluster-stacks (cluster-classes and addons).
+Next you need to have a GitHub token. The token will be used by the CSO to fetch GitHub releases that contain the cluster-stacks (cluster-classes and addons).
 ```
 export GITHUB_TOKEN=<GITHUB pat>
 ```
 
 The following script will use the GitHub token to create a secret. Further, flux is deployed and configured with a pointer to this repo. This will deploy and configure all relevant components.
+
 ```
 cd hack/deploy_flux
 sh deploy_flux_dev.sh 
 ```
 
-Now it will take some time to reconcile all resources, you can either watch flux and kubernetes doing its work or continue with the next step.
+### Production setup
+
+To start you also need a Kubernetes cluster, ideally not kind. If you want to make use of the RBAC rules, you need to configure oidc.
+The GitHub token is not required as it is included as an encrypted secret.
+
+```
+cd hack/deploy_flux
+sh deploy_flux_prod.sh 
+```
+
+Now it will take some time to reconcile all resources, you can either watch flux and Kubernetes doing its work or continue with the next step.
 
 For the following step you need your OpenStack credentials as a yaml-file. You feed the yaml file to the openstack-csp-helper chart with the following command.
 ```
