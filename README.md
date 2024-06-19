@@ -6,11 +6,11 @@ The moin-cluster can be used as a quickly disposable dev-setup, a long running p
 ## Usage 
 
 If you want to use a deployed and managed version, you can access the moin-cluster with the following kubeconfig.
-You need to have `oidc-login` installed on your machine.
+You also need to have `oidc-login` installed on your machine.
 
 `kubeconfig.yaml`
 
-```
+```yaml
 apiVersion: v1
 clusters:
 - cluster:
@@ -41,6 +41,10 @@ users:
       interactiveMode: IfAvailable
       provideClusterInfo: false
 ```
+
+If you then run `kubectl get pods --kubeconfig=kubeconfig.yaml` you are redirected to the browser to login via GitHub and after that you can use it as usual.
+
+There is also an instance of `capi-visualizer` deployed, which you can access on [`viz.moin.k8s.scs.community`](https://viz.moin.k8s.scs.community).
 
 ## Setup
 
@@ -100,7 +104,7 @@ helm upgrade -i csp-helper-my-tenant -n my-tenant --create-namespace https://git
 ```
 If the namespace where you deploy the openstack-csp-helper to contains the string "tenant" (like in the example "my-tenant"), a clusterstack, and therefore also a clusterclass is deployed automatically in that namespace. Which brings us to the second to last step. Apply your cluster resource:
 
-```
+```yaml
 cat <<EOF | kubectl apply -f -
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
