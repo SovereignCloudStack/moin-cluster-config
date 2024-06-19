@@ -21,3 +21,210 @@ spec:
     name: os-csp-p0-values
   interval: 3m0s
   targetNamespace: kaas-playground0
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: os-csp-p1
+  namespace: flux-system
+spec:
+  releaseName: os-csp-p1
+  chart:
+    spec:
+      chart: ./
+      sourceRef:
+        kind: GitRepository
+        name: openstack-csp-helper
+  install:
+    createNamespace: true
+    remediation:
+      retries: -1
+  valuesFrom:
+  - kind: Secret
+    name: os-csp-p1-values
+  interval: 3m0s
+  targetNamespace: kaas-playground1
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: os-csp-p2
+  namespace: flux-system
+spec:
+  releaseName: os-csp-p2
+  chart:
+    spec:
+      chart: ./
+      sourceRef:
+        kind: GitRepository
+        name: openstack-csp-helper
+  install:
+    createNamespace: true
+    remediation:
+      retries: -1
+  valuesFrom:
+  - kind: Secret
+    name: os-csp-p2-values
+  interval: 3m0s
+  targetNamespace: kaas-playground2
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: os-csp-p3
+  namespace: flux-system
+spec:
+  releaseName: os-csp-p3
+  chart:
+    spec:
+      chart: ./
+      sourceRef:
+        kind: GitRepository
+        name: openstack-csp-helper
+  install:
+    createNamespace: true
+    remediation:
+      retries: -1
+  valuesFrom:
+  - kind: Secret
+    name: os-csp-p3-values
+  interval: 3m0s
+  targetNamespace: kaas-playground3
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: os-csp-p4
+  namespace: flux-system
+spec:
+  releaseName: os-csp-p4
+  chart:
+    spec:
+      chart: ./
+      sourceRef:
+        kind: GitRepository
+        name: openstack-csp-helper
+  install:
+    createNamespace: true
+    remediation:
+      retries: -1
+  valuesFrom:
+  - kind: Secret
+    name: os-csp-p4-values
+  interval: 3m0s
+  targetNamespace: kaas-playground4
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: os-csp-p5
+  namespace: flux-system
+spec:
+  releaseName: os-csp-p5
+  chart:
+    spec:
+      chart: ./
+      sourceRef:
+        kind: GitRepository
+        name: openstack-csp-helper
+  install:
+    createNamespace: true
+    remediation:
+      retries: -1
+  valuesFrom:
+  - kind: Secret
+    name: os-csp-p5-values
+  interval: 3m0s
+  targetNamespace: kaas-playground5
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: os-csp-p6
+  namespace: flux-system
+spec:
+  releaseName: os-csp-p6
+  chart:
+    spec:
+      chart: ./
+      sourceRef:
+        kind: GitRepository
+        name: openstack-csp-helper
+  install:
+    createNamespace: true
+    remediation:
+      retries: -1
+  valuesFrom:
+  - kind: Secret
+    name: os-csp-p6-values
+  interval: 3m0s
+  targetNamespace: kaas-playground6
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: os-csp-p7
+  namespace: flux-system
+spec:
+  releaseName: os-csp-p7
+  chart:
+    spec:
+      chart: ./
+      sourceRef:
+        kind: GitRepository
+        name: openstack-csp-helper
+  install:
+    createNamespace: true
+    remediation:
+      retries: -1
+  valuesFrom:
+  - kind: Secret
+    name: os-csp-p7-values
+  interval: 3m0s
+  targetNamespace: kaas-playground7
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: os-csp-p8
+  namespace: flux-system
+spec:
+  releaseName: os-csp-p8
+  chart:
+    spec:
+      chart: ./
+      sourceRef:
+        kind: GitRepository
+        name: openstack-csp-helper
+  install:
+    createNamespace: true
+    remediation:
+      retries: -1
+  valuesFrom:
+  - kind: Secret
+    name: os-csp-p8-values
+  interval: 3m0s
+  targetNamespace: kaas-playground8
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: os-csp-p9
+  namespace: flux-system
+spec:
+  releaseName: os-csp-p9
+  chart:
+    spec:
+      chart: ./
+      sourceRef:
+        kind: GitRepository
+        name: openstack-csp-helper
+  install:
+    createNamespace: true
+    remediation:
+      retries: -1
+  valuesFrom:
+  - kind: Secret
+    name: os-csp-p9-values
+  interval: 3m0s
+  targetNamespace: kaas-playground9
