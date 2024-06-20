@@ -9,3 +9,4 @@ resources:
   - prod-ingress-nginx-installation-ks.yaml
   - prod-k8s-config-ks.yaml
   - prod-os-csp-helper-installation-ks.yaml
+  - prod-velero-installation-ks.yaml
