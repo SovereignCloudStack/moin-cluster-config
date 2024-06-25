@@ -4,3 +4,4 @@ resources:
   - scs-tenant-clusterrole.yaml
   - playground1-tenant-access-rolebinding.yaml
   - cluster-admins-clusterrolebinding.yaml
+  - pub-cc.yaml
