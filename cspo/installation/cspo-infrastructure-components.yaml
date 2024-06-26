@@ -656,18 +656,6 @@ subjects:
   namespace: cspo-system
 ---
 apiVersion: v1
-data:
-  git-access-token: Cg==
-  git-org-name: U292ZXJlaWduQ2xvdWRTdGFjaw==
-  git-provider: Z2l0aHVi
-  git-repo-name: Y2x1c3Rlci1zdGFja3M=
-kind: Secret
-metadata:
-  name: cspo-cluster-stack-variables
-  namespace: cspo-system
-type: Opaque
----
-apiVersion: v1
 kind: Service
 metadata:
   labels:
