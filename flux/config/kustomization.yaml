@@ -6,6 +6,7 @@ resources:
 - capi-installation-ks.yaml
 - capi-config-ks.yaml
 - cert-manager-installation-ks.yaml
+- kamaji-installation-ks.yaml
 - kyverno-installation-ks.yaml
 - kyverno-config-ks.yaml
 - cso-installation-ks.yaml
