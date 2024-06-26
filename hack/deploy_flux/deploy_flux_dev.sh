@@ -1,6 +1,7 @@
 #!/bin/bash
 # Create namespace for the CSO
 kubectl create namespace cso-system
+kubectl create namespace cspo-system
 
 # Create the config for the CSO
 kubectl create secret generic cso-cluster-stack-variables -n cso-system \
