@@ -9,4 +9,5 @@ resources:
 - kyverno-installation-ks.yaml
 - kyverno-config-ks.yaml
 - cso-installation-ks.yaml
+- cspo-installation-ks.yaml
 - capi-visualizer-installation-ks.yaml
