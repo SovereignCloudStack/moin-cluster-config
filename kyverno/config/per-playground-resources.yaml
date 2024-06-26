@@ -65,4 +65,4 @@ spec:
           subjects:
             - apiGroup: rbac.authorization.k8s.io
               kind: Group
-              name: 'oidcSovereignCloudStack:moin-cluster-all-playgrounds'
+              name: 'oidc:SovereignCloudStack:moin-cluster-all-playgrounds'
