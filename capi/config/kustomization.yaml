@@ -5,3 +5,4 @@ resources:
   - cacpp.yaml
   - caip.yaml
   - cabp.yaml
+  - kamaji.yaml
