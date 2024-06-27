@@ -6,7 +6,8 @@ The moin-cluster can be used as a quickly disposable dev-setup, a long running p
 ## Usage 
 
 If you want to use a deployed and managed version, you can access the moin-cluster with the following kubeconfig.
-You also need to have `oidc-login` installed on your machine.
+
+You also need to have [`oidc-login`](https://github.com/int128/kubelogin) installed on your machine.
 
 `kubeconfig.yaml`
 
