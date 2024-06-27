@@ -13,3 +13,6 @@ subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
   name: "oidc:SovereignCloudStack:vp06a"
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: "oidc:SovereignCloudStack:vp06c"
