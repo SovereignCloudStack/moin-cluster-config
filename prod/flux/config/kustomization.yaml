@@ -3,8 +3,12 @@ kind: Kustomization
 resources:
   - prod-flux-config-ks.yaml
   - prod-cso-config-ks.yaml
+  - prod-cspo-config-ks.yaml
   - prod-cert-manager-config-ks.yaml
   - prod-external-dns-installation-ks.yaml
   - prod-ingress-nginx-config-ks.yaml
   - prod-ingress-nginx-installation-ks.yaml
   - prod-k8s-config-ks.yaml
+  - prod-os-csp-helper-installation-ks.yaml
+  - prod-velero-installation-ks.yaml
+  - prod-cluster-gen-installation-ks.yaml

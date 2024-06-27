@@ -1,0 +1,53 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: velero
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: velero
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: vmware-tanzu
+      version: 6.7.0
+  install:
+    createNamespace: true
+  interval: 1m0s
+  targetNamespace: velero
+  values:
+    backupsEnabled: true
+    configuration:
+      backupStorageLocation:
+      - bucket: bkp-moin
+        config:
+          checksumAlgorithm: ""
+          s3ForcePathStyle: true
+          s3Url: https://swift.services.a.regiocloud.tech
+        credential:
+          key: aws
+          name: bsl-credentials
+        name: default
+        provider: aws
+    initContainers:
+    - image: velero/velero-plugin-for-aws:v1.10.0
+      imagePullPolicy: IfNotPresent
+      name: velero-plugin-for-aws
+      volumeMounts:
+      - mountPath: /target
+        name: plugins
+    schedules:
+      30m-30d:
+        disabled: false
+        schedule: '@every 30m'
+        template:
+          excludedNamespaceScopedResources:
+          - events
+          includedNamespaces:
+          - '*'
+          snapshotVolumes: false
+          ttl: 720h0m0s
+        useOwnerReferencesInBackup: false
+    snapshotsEnabled: false

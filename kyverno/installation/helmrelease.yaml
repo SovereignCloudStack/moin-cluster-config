@@ -25,13 +25,52 @@ spec:
         clusterRole:
           extraResources:
             - apiGroups:
-              - clusterstack.x-k8s.io
+              - cluster.x-k8s.io
               resources:
-              - clusterstacks
+              - "*"
               verbs:
+              - get
               - create
               - update
               - delete
+              - watch
+              - list
+              - patch
+            - apiGroups:
+              - ""
+              resources:
+              - "secrets"
+              verbs:
+              - get
+              - create
+              - update
+              - delete
+              - watch
+              - list
+              - patch
+            - apiGroups:
+              - clusterstack.x-k8s.io
+              resources:
+              - "*"
+              verbs:
+              - get
+              - create
+              - update
+              - delete
+              - watch
+              - list
+              - patch
+            - apiGroups:
+              - infrastructure.clusterstack.x-k8s.io
+              resources:
+              - "*"
+              verbs:
+              - get
+              - create
+              - update
+              - delete
+              - watch
+              - list
               - patch
   interval: 10s
   targetNamespace: kyverno

@@ -1,0 +1,33 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: cluster-gen
+  namespace: flux-system
+spec:
+  interval: 1m
+  ref:
+    branch: main
+  url: https://github.com/SovereignCloudStack/cluster-gen.git
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: cluster-gen
+  namespace: flux-system
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: ./chart
+      version: 1.0.0
+      sourceRef:
+        kind: GitRepository
+        name: cluster-gen
+  install:
+    createNamespace: true
+    remediation:
+      retries: -1
+  targetNamespace: cluster-gen
+  values:
+    image: registry.scs.community/cluster-gen/cluster-gen:v0.0.2
