@@ -20,9 +20,10 @@ spec:
   chart:
     spec:
       chart: ./chart
+      version: 1.0.0
       sourceRef:
         kind: GitRepository
-        name: cluster-gen
+        name: flux-system
   install:
     createNamespace: true
     remediation:
