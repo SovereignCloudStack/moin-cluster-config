@@ -24,7 +24,6 @@ contexts:
   name: moin-cluster
 current-context: moin-cluster
 kind: Config
-preferences: {}
 users:
 - name: oidc
   user:
@@ -35,17 +34,14 @@ users:
       - get-token
       - --oidc-issuer-url=https://dex.k8s.scs.community
       - --oidc-client-id=kubectl
-      - --oidc-extra-scope=groups
-      - --oidc-extra-scope=profile
+      - --oidc-extra-scope=groups,profile
       command: kubectl
-      env: null
-      interactiveMode: IfAvailable
-      provideClusterInfo: false
 ```
 
 If you then run `kubectl get pods --kubeconfig=kubeconfig.yaml` you are redirected to the browser to login via GitHub and after that you can use it as usual.
 
-There is also an instance of `capi-visualizer` deployed, which you can access on [`viz.moin.k8s.scs.community`](https://viz.moin.k8s.scs.community).
+* Generate a `cluster.yaml` with [`cluster-gen.moin.k8s.scs.community`](https://cluster-gen.moin.k8s.scs.community/) and apply it with `kubectl apply -f cluster.yaml`
+* Check the reconciliation progress with our an instance of `capi-visualizer`, which you can access on [`viz.moin.k8s.scs.community`](https://viz.moin.k8s.scs.community).
 
 ## Setup
 
