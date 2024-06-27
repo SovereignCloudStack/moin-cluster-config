@@ -15,6 +15,7 @@ metadata:
   name: cluster-gen
   namespace: cluster-gen
 spec:
+  interval: 1m
   chart:
     spec:
       chart: ./chart
