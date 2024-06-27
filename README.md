@@ -34,8 +34,7 @@ users:
       - get-token
       - --oidc-issuer-url=https://dex.k8s.scs.community
       - --oidc-client-id=kubectl
-      - --oidc-extra-scope=groups
-      - --oidc-extra-scope=profile
+      - --oidc-extra-scope=groups,profile
       command: kubectl
 ```
 
