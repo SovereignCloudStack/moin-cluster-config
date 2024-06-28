@@ -1,0 +1,24 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: dnation-kubernetes-monitoring-stack
+  namespace: flux-system
+spec:
+  releaseName: dnation-kubernetes-monitoring-stack
+  chart:
+    spec:
+      chart: dnation-kubernetes-monitoring-stack
+      sourceRef:
+        kind: HelmRepository
+        name: dnation-cloud
+  install:
+    createNamespace: true
+  interval: 5m0s
+  targetNamespace: monitoring
+  valuesFrom:
+    - kind: ConfigMap
+      name: values-workload
+      valuesKey: values.yaml
+    - kind: Secret
+      name: thanos-objstore
