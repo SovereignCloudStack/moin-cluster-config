@@ -5,4 +5,4 @@ metadata:
   name: dnation-cloud
   namespace: flux-system
 spec:
-  url: https://charts.dnationcloud.com/
+  url: https://dnationcloud.github.io/helm-hub/

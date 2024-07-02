@@ -32,13 +32,13 @@ data:
           nodePorts:
             grpc: "31050"
 
-    containerLabel: &containerLabel
-      sourceLabels: [__meta_kubernetes_pod_container_name]
-      separator: ;
-      regex: ^(.*)$
-      targetLabel: container
-      replacement: $1
-      action: replace
+    dnation-kubernetes-monitoring:
+      dnation-kubernetes-jsonnet-translator:
+        enabled: false
+      prometheusRules:
+        enable: false
+      grafanaDashboards:
+        enable: false
 
     loki:
       enabled: false
