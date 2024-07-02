@@ -20,8 +20,8 @@ spec:
     remediation:
       retries: -1
   values:
-    etcd:
-      persistence:
-        storageClassName: csi-cinder-sc-delete
+    #    etcd:
+    #      persistence:
+    #        storageClassName: csi-cinder-sc-delete
   interval: 10s
   targetNamespace: kamaji-system
