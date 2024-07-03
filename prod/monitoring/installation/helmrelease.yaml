@@ -23,4 +23,4 @@ spec:
       name: values-workload
       valuesKey: values.yaml
     - kind: Secret
-      name: thanos-objstore
+      name: monitoring-values

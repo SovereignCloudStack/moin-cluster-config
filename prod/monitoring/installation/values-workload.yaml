@@ -43,7 +43,8 @@ data:
     loki:
       enabled: false
     promtail:
-      enabled: false
+      extraArgs:
+      - -client.external-labels=cluster=moin-cluster
 
     kube-prometheus-stack:
       prometheus:
