@@ -13,7 +13,15 @@ spec:
   validationFailureAction: Audit
   generateExisting: true
   rules:
-    - generate:
+    - name: generate-clusterstack
+      match:
+        any:
+          - resources:
+              kinds:
+                - Namespace
+              names:
+                - '*playground*'
+      generate:
         apiVersion: clusterstack.x-k8s.io/v1alpha1
         data:
           metadata:
@@ -32,14 +40,6 @@ spec:
         name: scs-cluster-stack
         namespace: '{{request.object.metadata.name}}'
         synchronize: true
-      match:
-        any:
-          - resources:
-              kinds:
-                - Namespace
-              names:
-                - '*playground*'
-      name: generate-clusterstack
     - name: generate-rolebinding
       match:
         any:
@@ -66,3 +66,33 @@ spec:
             - apiGroup: rbac.authorization.k8s.io
               kind: Group
               name: 'oidc:SovereignCloudStack:moin-cluster-all-playgrounds'
+    - name: generate-kamaji-clusterstack
+      match:
+        any:
+          - resources:
+              kinds:
+                - Namespace
+              names:
+                - '*playground*'
+      generate:
+        apiVersion: clusterstack.x-k8s.io/v1alpha1
+        data:
+          metadata:
+            name: kamaji
+            namespace: '{{request.object.metadata.name}}'
+          spec:
+            provider: openstack
+            name: kamaji
+            kubernetesVersion: "1.30"
+            channel: custom
+            autoSubscribe: false
+            providerRef:
+              apiVersion: infrastructure.clusterstack.x-k8s.io/v1alpha1
+              kind: OpenStackClusterStackReleaseTemplate
+              name: cspotemplate
+            versions:
+              - v0-sha.11930ee
+        kind: ClusterStack
+        name: kamaji
+        namespace: '{{request.object.metadata.name}}'
+        synchronize: true
