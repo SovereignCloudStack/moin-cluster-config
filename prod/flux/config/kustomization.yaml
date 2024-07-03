@@ -12,3 +12,4 @@ resources:
   - prod-os-csp-helper-installation-ks.yaml
   - prod-velero-installation-ks.yaml
   - prod-cluster-gen-installation-ks.yaml
+  - prod-monitoring-installation-ks.yaml
