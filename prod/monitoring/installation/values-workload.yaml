@@ -1,0 +1,73 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: values-workload
+  namespace: flux-system
+data:
+  values.yaml: |
+    thanosStorage:
+      secret:
+        name: thanos-objstore-config
+        key: objstore.yml
+
+    thanos:
+      fullnameOverride: thanos
+      existingObjstoreSecret: thanos-objstore-config
+      bucketweb:
+        enabled: true
+      storegateway:
+        enabled: true
+      compactor:
+        enabled: true
+        persistence:
+          size: 20Gi
+      query:
+        replicaCount: 2
+        replicaLabel: [prometheus_replica]
+    ## FIXME: Thanos query is temporary exposed via (unsecure) NodePort, see https://github.com/SovereignCloudStack/k8s-observability/issues/32
+    ##   Thanos query should be exposed via ingress, see below commented section
+        serviceGrpc:
+          type: NodePort
+          nodePorts:
+            grpc: "31050"
+
+    dnation-kubernetes-monitoring:
+      dnation-kubernetes-jsonnet-translator:
+        enabled: false
+      prometheusRules:
+        enable: false
+      grafanaDashboards:
+        enable: false
+
+    loki:
+      enabled: false
+    promtail:
+      extraArgs:
+      - -client.external-labels=cluster=moin-cluster
+
+    kube-prometheus-stack:
+      prometheus:
+        prometheusSpec:
+          thanos:
+            objectStorageConfig:
+              existingSecret:
+                name: thanos-objstore-config
+                key: objstore.yml
+          replicas: 2
+          externalLabels:
+            cluster: "moin-cluster"
+      alertmanager:
+        enabled: false
+      grafana:
+        enabled: false
+      defaultRules:
+        create: false
+      kubeScheduler:
+        serviceMonitor:
+          # TODO fix this:
+          insecureSkipVerify: true
+      kubeControllerManager:
+        serviceMonitor:
+          # TODO fix this:
+          insecureSkipVerify: true
