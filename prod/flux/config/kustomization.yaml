@@ -13,3 +13,4 @@ resources:
   - prod-velero-installation-ks.yaml
   - prod-cluster-gen-installation-ks.yaml
   - prod-monitoring-installation-ks.yaml
+  - prod-crossplane-installation-ks.yaml
