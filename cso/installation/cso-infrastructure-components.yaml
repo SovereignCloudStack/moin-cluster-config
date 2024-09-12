@@ -870,6 +870,8 @@ spec:
         - --leader-elect=true
         command:
         - /manager
+        - -source
+        - oci
         env:
         - name: GIT_PROVIDER
           valueFrom:
@@ -890,6 +892,31 @@ spec:
           valueFrom:
             secretKeyRef:
               key: git-access-token
+              name: cso-cluster-stack-variables
+        - name: OCI_REGISTRY
+          valueFrom:
+            secretKeyRef:
+              key: oci-registry
+              name: cso-cluster-stack-variables
+        - name: OCI_REPOSITORY
+          valueFrom:
+            secretKeyRef:
+              key: oci-repository
+              name: cso-cluster-stack-variables
+        - name: OCI_ACCESS_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: oci-access-token
+              name: cso-cluster-stack-variables
+        - name: OCI_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: oci-username
+              name: cso-cluster-stack-variables
+        - name: OCI_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: oci-password
               name: cso-cluster-stack-variables
         image: ghcr.io/sovereigncloudstack/cso:v0.1.0-alpha.7
         imagePullPolicy: Always
