@@ -16,6 +16,6 @@ spec:
       ClusterTopology: true
       MachinePool: true
       MachineSetPreflightChecks: false
-      RuntimeSDK: false
+      RuntimeSDK: true
     verbosity: 1
   version: v1.8.3
