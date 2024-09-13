@@ -24,18 +24,19 @@ spec:
       generate:
         apiVersion: infrastructure.clusterstack.x-k8s.io/v1alpha1
         kind: OpenStackClusterStackReleaseTemplate
-        metadata:
-          name: cspotemplate
-          namespace: "{{request.object.metadata.name}}"
-        spec:
-          template:
-            spec:
-              identityRef:
-                kind: Secret
-                name: openstack
         name: cspotemplate
         namespace: "{{request.object.metadata.name}}"
         synchronize: true
+        data:
+          metadata:
+            name: cspotemplate
+            namespace: "{{request.object.metadata.name}}"
+          spec:
+            template:
+              spec:
+                identityRef:
+                  kind: Secret
+                  name: openstack
     - name: generate-clusterstack-131
       match:
         any:
@@ -46,6 +47,10 @@ spec:
                 - "*playground*"
       generate:
         apiVersion: clusterstack.x-k8s.io/v1alpha1
+        kind: ClusterStack
+        name: scs-cluster-stack-1-31
+        namespace: "{{request.object.metadata.name}}"
+        synchronize: true
         data:
           metadata:
             name: scs-cluster-stack-1-31
@@ -62,10 +67,6 @@ spec:
               name: cspotemplate
             versions:
               - v0-sha.uwjqzaq
-        kind: ClusterStack
-        name: scs-cluster-stack-1-31
-        namespace: "{{request.object.metadata.name}}"
-        synchronize: true
     - name: generate-clusterstack-130
       match:
         any:
