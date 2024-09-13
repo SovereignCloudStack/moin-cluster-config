@@ -37,7 +37,7 @@ spec:
             versions:
               - v0-sha.uwjqzaq
         kind: ClusterStack
-        name: scs-cluster-stack
+        name: scs-cluster-stack-1-31
         namespace: "{{request.object.metadata.name}}"
         synchronize: true
     - name: generate-clusterstack-130
@@ -64,7 +64,7 @@ spec:
             versions:
               - v0-sha.lkpzztq
         kind: ClusterStack
-        name: scs-cluster-stack
+        name: scs-cluster-stack-1-31
         namespace: "{{request.object.metadata.name}}"
         synchronize: true
     - name: generate-rolebinding
