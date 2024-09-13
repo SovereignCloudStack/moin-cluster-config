@@ -10,4 +10,4 @@ metadata:
   name: openstack
   namespace: openstack-infrastructure-system
 spec:
-  version: v0.10.2
+  version: v0.10.5

@@ -13,7 +13,7 @@ spec:
     spec:
       chart: cluster-api-operator
       reconcileStrategy: ChartVersion
-      version: 0.10.1
+      version: 0.13.0
       sourceRef:
         kind: HelmRepository
         name: capi
