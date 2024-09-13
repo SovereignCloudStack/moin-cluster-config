@@ -30,12 +30,12 @@ spec:
           spec:
             autoSubscribe: false
             channel: stable
-            kubernetesVersion: '1.27'
+            kubernetesVersion: '1.31'
             name: scs
             noProvider: true
             provider: openstack
             versions:
-              - v4
+              - v0-sha.uwjqzaq
         kind: ClusterStack
         name: scs-cluster-stack
         namespace: '{{request.object.metadata.name}}'
