@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 10s
   ref:
-    branch: main
+    branch: moin_hacking
   url: https://github.com/SovereignCloudStack/moin-cluster-config.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
