@@ -13,7 +13,7 @@ spec:
   validationFailureAction: Audit
   generateExisting: true
   rules:
-    - name: generate-clusterstack
+    - name: generate-clusterstack-131
       match:
         any:
           - resources:
@@ -36,6 +36,33 @@ spec:
             provider: openstack
             versions:
               - v0-sha.uwjqzaq
+        kind: ClusterStack
+        name: scs-cluster-stack
+        namespace: '{{request.object.metadata.name}}'
+        synchronize: true
+    - name: generate-clusterstack-130
+      match:
+        any:
+          - resources:
+              kinds:
+                - Namespace
+              names:
+                - '*playground*'
+      generate:
+        apiVersion: clusterstack.x-k8s.io/v1alpha1
+        data:
+          metadata:
+            name: scs-cluster-stack
+            namespace: '{{request.object.metadata.name}}'
+          spec:
+            autoSubscribe: false
+            channel: stable
+            kubernetesVersion: '1.30'
+            name: scs
+            noProvider: true
+            provider: openstack
+            versions:
+              - v0-sha.lkpzztq
         kind: ClusterStack
         name: scs-cluster-stack
         namespace: '{{request.object.metadata.name}}'
