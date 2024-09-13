@@ -920,6 +920,10 @@ spec:
               name: cso-cluster-stack-variables
         image: ghcr.io/sovereigncloudstack/cso:v0.1.0-alpha.7
         imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /tmp/k8s-hook-server/serving-certs
+          name: hook-server-cert
+          readOnly: true
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -955,6 +959,30 @@ spec:
       tolerations:
       - effect: NoSchedule
         key: node-role.kubernetes.io/control-plane
+      volumes:
+      - name: hook-server-cert
+        secret:
+          defaultMode: 420
+          secretName: cso-hook-server-server-cert
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  labels:
+    cluster.x-k8s.io/provider: cluster-stack-operator
+  name: cso-hook-server-server-cert
+  namespace: cso-system
+spec:
+  dnsNames:
+  - $(SERVICE_NAME).$(SERVICE_NAMESPACE).svc
+  - $(SERVICE_NAME).$(SERVICE_NAMESPACE).svc.cluster.local
+  issuerRef:
+    kind: Issuer
+    name: cso-selfsigned-issuer
+  secretName: cso-hook-server-server-cert
+  subject:
+    organizations:
+    - k8s-sig-cluster-lifecycle
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
