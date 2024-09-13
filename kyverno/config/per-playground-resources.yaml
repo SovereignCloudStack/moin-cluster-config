@@ -13,6 +13,29 @@ spec:
   validationFailureAction: Audit
   generateExisting: true
   rules:
+    - name: generate-cspotemplate
+      match:
+        any:
+          - resources:
+              kinds:
+                - Namespace
+              names:
+                - "*playground*"
+      generate:
+        apiVersion: infrastructure.clusterstack.x-k8s.io/v1alpha1
+        kind: OpenStackClusterStackReleaseTemplate
+        metadata:
+          name: cspotemplate
+          namespace: "{{request.object.metadata.name}}"
+        spec:
+          template:
+            spec:
+              identityRef:
+                kind: Secret
+                name: openstack
+        name: cspotemplate
+        namespace: "{{request.object.metadata.name}}"
+        synchronize: true
     - name: generate-clusterstack-131
       match:
         any:
@@ -32,8 +55,11 @@ spec:
             channel: stable
             kubernetesVersion: "1.31"
             name: scs
-            noProvider: true
             provider: openstack
+            providerRef:
+              apiVersion: infrastructure.clusterstack.x-k8s.io/v1alpha1
+              kind: OpenStackClusterStackReleaseTemplate
+              name: cspotemplate
             versions:
               - v0-sha.uwjqzaq
         kind: ClusterStack
@@ -59,7 +85,10 @@ spec:
             channel: stable
             kubernetesVersion: "1.30"
             name: scs
-            noProvider: true
+            providerRef:
+              apiVersion: infrastructure.clusterstack.x-k8s.io/v1alpha1
+              kind: OpenStackClusterStackReleaseTemplate
+              name: cspotemplate
             provider: openstack
             versions:
               - v0-sha.lkpzztq
