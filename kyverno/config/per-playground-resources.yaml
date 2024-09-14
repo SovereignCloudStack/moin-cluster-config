@@ -130,13 +130,13 @@ spec:
               kinds:
                 - Namespace
               names:
-                - '*playground*'
+                - "*playground*"
       generate:
         apiVersion: clusterstack.x-k8s.io/v1alpha1
         data:
           metadata:
             name: kamaji
-            namespace: '{{request.object.metadata.name}}'
+            namespace: "{{request.object.metadata.name}}"
           spec:
             provider: openstack
             name: kamaji
@@ -148,8 +148,8 @@ spec:
               kind: OpenStackClusterStackReleaseTemplate
               name: cspotemplate
             versions:
-              - v0-sha-frco630
+              - v0-sha.frco630
         kind: ClusterStack
         name: kamaji
-        namespace: '{{request.object.metadata.name}}'
+        namespace: "{{request.object.metadata.name}}"
         synchronize: true
