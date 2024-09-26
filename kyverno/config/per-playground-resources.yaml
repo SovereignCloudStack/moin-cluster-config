@@ -66,7 +66,7 @@ spec:
               kind: OpenStackClusterStackReleaseTemplate
               name: cspotemplate
             versions:
-              - v0-sha.uwjqzaq
+              - v0-sha.ve8qmt7
     - name: generate-clusterstack-130
       match:
         any:
@@ -92,7 +92,7 @@ spec:
               name: cspotemplate
             provider: openstack
             versions:
-              - v0-sha.lkpzztq
+              - v0-sha.onehude
         kind: ClusterStack
         name: scs-cluster-stack-1-30
         namespace: "{{request.object.metadata.name}}"
