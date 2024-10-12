@@ -11,7 +11,7 @@ spec:
     spec:
       chart: kyverno
       reconcileStrategy: ChartVersion
-      version: v3.2.2
+      version: v3.2.7
       sourceRef:
         kind: HelmRepository
         name: kyverno
@@ -25,53 +25,53 @@ spec:
         clusterRole:
           extraResources:
             - apiGroups:
-              - cluster.x-k8s.io
+                - cluster.x-k8s.io
               resources:
-              - "*"
+                - "*"
               verbs:
-              - get
-              - create
-              - update
-              - delete
-              - watch
-              - list
-              - patch
+                - get
+                - create
+                - update
+                - delete
+                - watch
+                - list
+                - patch
             - apiGroups:
-              - ""
+                - ""
               resources:
-              - "secrets"
+                - "secrets"
               verbs:
-              - get
-              - create
-              - update
-              - delete
-              - watch
-              - list
-              - patch
+                - get
+                - create
+                - update
+                - delete
+                - watch
+                - list
+                - patch
             - apiGroups:
-              - clusterstack.x-k8s.io
+                - clusterstack.x-k8s.io
               resources:
-              - "*"
+                - "*"
               verbs:
-              - get
-              - create
-              - update
-              - delete
-              - watch
-              - list
-              - patch
+                - get
+                - create
+                - update
+                - delete
+                - watch
+                - list
+                - patch
             - apiGroups:
-              - infrastructure.clusterstack.x-k8s.io
-              - infrastructure.cluster.x-k8s.io
+                - infrastructure.clusterstack.x-k8s.io
+                - infrastructure.cluster.x-k8s.io
               resources:
-              - "*"
+                - "*"
               verbs:
-              - get
-              - create
-              - update
-              - delete
-              - watch
-              - list
-              - patch
+                - get
+                - create
+                - update
+                - delete
+                - watch
+                - list
+                - patch
   interval: 10s
   targetNamespace: kyverno
