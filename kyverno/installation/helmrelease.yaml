@@ -63,6 +63,7 @@ spec:
             - apiGroups:
                 - infrastructure.clusterstack.x-k8s.io
                 - infrastructure.cluster.x-k8s.io
+                - addons.cluster.x-k8s.io
               resources:
                 - "*"
               verbs:
