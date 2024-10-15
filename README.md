@@ -63,6 +63,7 @@ The prod components include all of the above and additionally include:
 - Kyverno policies
 - secrets for gx-scs, dns, github
 - pre-deployed namespaces with secrets
+- dex
 
 ### Development setup
 

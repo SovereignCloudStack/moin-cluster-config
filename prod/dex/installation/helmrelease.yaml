@@ -1,25 +1,26 @@
 ---
-# TODO pin CAPI controller, CAPO controller versions
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: capi-operator
+  name: dex
   namespace: flux-system
 spec:
+  releaseName: dex
   persistentClient: false # hopefully this mimics --wait
-  dependsOn:
-    - name: cert-manager
   chart:
     spec:
-      chart: cluster-api-operator
+      chart: dex
       reconcileStrategy: ChartVersion
-      version: 0.13.0
+      version: 0.19.1
       sourceRef:
         kind: HelmRepository
-        name: capi
+        name: dex
   install:
     createNamespace: true
     remediation:
       retries: -1
-  interval: 10s
-  targetNamespace: capi-operator-system
+  valuesFrom:
+    - kind: Secret
+      name: dex-secret-values
+  interval: 3m0s
+  targetNamespace: dex
