@@ -94,7 +94,7 @@ spec:
             versions:
               - v0-sha.pxfmezw
         kind: ClusterStack
-        name: scs-cluster-stack-1-30
+        name: openstack-scs-130
         namespace: "{{request.object.metadata.name}}"
         synchronize: true
     - name: generate-rolebinding
