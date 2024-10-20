@@ -67,36 +67,36 @@ spec:
     #          name: cspotemplate
     #        versions:
     #          - v0-sha.ve8qmt7
-    #- name: generate-clusterstack-130
-    #  match:
-    #    any:
-    #      - resources:
-    #          kinds:
-    #            - Namespace
-    #          names:
-    #            - "*playground*"
-    #  generate:
-    #    apiVersion: clusterstack.x-k8s.io/v1alpha1
-    #    data:
-    #      metadata:
-    #        name: scs-cluster-stack-1-30
-    #        namespace: "{{request.object.metadata.name}}"
-    #      spec:
-    #        autoSubscribe: false
-    #        channel: stable
-    #        kubernetesVersion: "1.30"
-    #        name: scs
-    #        providerRef:
-    #          apiVersion: infrastructure.clusterstack.x-k8s.io/v1alpha1
-    #          kind: OpenStackClusterStackReleaseTemplate
-    #          name: cspotemplate
-    #        provider: openstack
-    #        versions:
-    #          - v0-sha.onehude
-    #    kind: ClusterStack
-    #    name: scs-cluster-stack-1-30
-    #    namespace: "{{request.object.metadata.name}}"
-    #    synchronize: true
+    - name: generate-clusterstack-130
+      match:
+        any:
+          - resources:
+              kinds:
+                - Namespace
+              names:
+                - "*playground*"
+      generate:
+        apiVersion: clusterstack.x-k8s.io/v1alpha1
+        data:
+          metadata:
+            name: openstack-scs-130
+            namespace: "{{request.object.metadata.name}}"
+          spec:
+            autoSubscribe: false
+            channel: custom
+            kubernetesVersion: "1.30"
+            name: scs
+            providerRef:
+              apiVersion: infrastructure.clusterstack.x-k8s.io/v1alpha1
+              kind: OpenStackClusterStackReleaseTemplate
+              name: cspotemplate
+            provider: openstack
+            versions:
+              - v0-sha.pxfmezw
+        kind: ClusterStack
+        name: scs-cluster-stack-1-30
+        namespace: "{{request.object.metadata.name}}"
+        synchronize: true
     - name: generate-rolebinding
       match:
         any:
