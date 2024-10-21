@@ -83,7 +83,7 @@ spec:
             namespace: "{{request.object.metadata.name}}"
           spec:
             autoSubscribe: false
-            channel: custom
+            channel: stable
             kubernetesVersion: "1.30"
             name: scs
             providerRef:
@@ -144,7 +144,7 @@ spec:
     #        provider: openstack
     #        name: kamaji
     #        kubernetesVersion: "1.30"
-    #        channel: custom
+    #        channel: stable
     #        autoSubscribe: false
     #        providerRef:
     #          apiVersion: infrastructure.clusterstack.x-k8s.io/v1alpha1
