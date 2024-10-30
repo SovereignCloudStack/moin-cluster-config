@@ -45,6 +45,13 @@ data:
     promtail:
       extraArgs:
       - -client.external-labels=cluster=moin-cluster
+      config:
+        snippets:
+          extraScrapeConfigs: |
+            - action: keep
+              source_labels:
+                - __meta_kubernetes_namespace
+              regex: capo-system|capi-system|capi-kamaji-control-plane-system|cso-system|cspo-system
 
     kube-prometheus-stack:
       prometheus:
