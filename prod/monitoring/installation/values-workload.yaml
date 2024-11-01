@@ -119,11 +119,10 @@ data:
                   - __meta_kubernetes_pod_annotation_kubernetes_io_config_hash
                   - __meta_kubernetes_pod_container_name
                   target_label: __path__
-                  - action: keep
-                    source_labels:
-                      - __meta_kubernetes_namespace
-                    regex: capo-system|capi-system|capi-kamaji-control-plane-system|cso-system|cspo-system
-
+                - action: keep
+                  source_labels:
+                    - __meta_kubernetes_namespace
+                  regex: capo-system|capi-system|capi-kamaji-control-plane-system|cso-system|cspo-system
     kube-prometheus-stack:
       prometheus:
         prometheusSpec:
