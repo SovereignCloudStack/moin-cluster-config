@@ -13,33 +13,90 @@ spec:
   validationFailureAction: Audit
   generateExisting: true
   rules:
-    - name: generate-clusterstack
+    - name: generate-cspotemplate
       match:
         any:
           - resources:
               kinds:
                 - Namespace
               names:
-                - '*playground*'
+                - "*playground*"
       generate:
-        apiVersion: clusterstack.x-k8s.io/v1alpha1
+        apiVersion: infrastructure.clusterstack.x-k8s.io/v1alpha1
+        kind: OpenStackClusterStackReleaseTemplate
+        name: cspotemplate
+        namespace: "{{request.object.metadata.name}}"
+        synchronize: true
         data:
           metadata:
-            name: scs-cluster-stack
-            namespace: '{{request.object.metadata.name}}'
+            name: cspotemplate
+            namespace: "{{request.object.metadata.name}}"
           spec:
-            autoSubscribe: false
-            channel: stable
-            kubernetesVersion: '1.27'
-            name: scs
-            noProvider: true
-            provider: openstack
-            versions:
-              - v4
-        kind: ClusterStack
-        name: scs-cluster-stack
-        namespace: '{{request.object.metadata.name}}'
-        synchronize: true
+            template:
+              spec:
+                identityRef:
+                  kind: Secret
+                  name: openstack
+    #- name: generate-clusterstack-131
+    #  match:
+    #    any:
+    #      - resources:
+    #          kinds:
+    #            - Namespace
+    #          names:
+    #            - "*playground*"
+    #  generate:
+    #    apiVersion: clusterstack.x-k8s.io/v1alpha1
+    #    kind: ClusterStack
+    #    name: scs-cluster-stack-1-31
+    #    namespace: "{{request.object.metadata.name}}"
+    #    synchronize: true
+    #    data:
+    #      metadata:
+    #        name: scs-cluster-stack-1-31
+    #        namespace: "{{request.object.metadata.name}}"
+    #      spec:
+    #        autoSubscribe: false
+    #        channel: stable
+    #        kubernetesVersion: "1.31"
+    #        name: scs
+    #        provider: openstack
+    #        providerRef:
+    #          apiVersion: infrastructure.clusterstack.x-k8s.io/v1alpha1
+    #          kind: OpenStackClusterStackReleaseTemplate
+    #          name: cspotemplate
+    #        versions:
+    #          - v0-sha.ve8qmt7
+    #- name: generate-clusterstack-130
+    #  match:
+    #    any:
+    #      - resources:
+    #          kinds:
+    #            - Namespace
+    #          names:
+    #            - "*playground*"
+    #  generate:
+    #    apiVersion: clusterstack.x-k8s.io/v1alpha1
+    #    data:
+    #      metadata:
+    #        name: openstack-scs-130
+    #        namespace: "{{request.object.metadata.name}}"
+    #      spec:
+    #        autoSubscribe: false
+    #        channel: stable
+    #        kubernetesVersion: "1.30"
+    #        name: scs
+    #        providerRef:
+    #          apiVersion: infrastructure.clusterstack.x-k8s.io/v1alpha1
+    #          kind: OpenStackClusterStackReleaseTemplate
+    #          name: cspotemplate
+    #        provider: openstack
+    #        versions:
+    #          - v0-sha.pxfmezw
+    #    kind: ClusterStack
+    #    name: openstack-scs-130
+    #    namespace: "{{request.object.metadata.name}}"
+    #    synchronize: true
     - name: generate-rolebinding
       match:
         any:
@@ -47,17 +104,17 @@ spec:
               kinds:
                 - Namespace
               names:
-                - '*playground*'
+                - "*playground*"
       generate:
         synchronize: true
         apiVersion: rbac.authorization.k8s.io/v1
         kind: RoleBinding
         name: scs-tenant-rolebinding
-        namespace: '{{request.object.metadata.name}}'
+        namespace: "{{request.object.metadata.name}}"
         data:
           metadata:
             name: scs-tenant-rolebinding
-            namespace: '{{request.object.metadata.name}}'
+            namespace: "{{request.object.metadata.name}}"
           roleRef:
             apiGroup: rbac.authorization.k8s.io
             kind: ClusterRole
@@ -65,34 +122,37 @@ spec:
           subjects:
             - apiGroup: rbac.authorization.k8s.io
               kind: Group
-              name: 'oidc:SovereignCloudStack:moin-cluster-all-playgrounds'
-    - name: generate-kamaji-clusterstack
-      match:
-        any:
-          - resources:
-              kinds:
-                - Namespace
-              names:
-                - '*playground*'
-      generate:
-        apiVersion: clusterstack.x-k8s.io/v1alpha1
-        data:
-          metadata:
-            name: kamaji
-            namespace: '{{request.object.metadata.name}}'
-          spec:
-            provider: openstack
-            name: kamaji
-            kubernetesVersion: "1.30"
-            channel: custom
-            autoSubscribe: false
-            providerRef:
-              apiVersion: infrastructure.clusterstack.x-k8s.io/v1alpha1
-              kind: OpenStackClusterStackReleaseTemplate
-              name: cspotemplate
-            versions:
-              - v0-sha.11930ee
-        kind: ClusterStack
-        name: kamaji
-        namespace: '{{request.object.metadata.name}}'
-        synchronize: true
+              name: "oidc:SovereignCloudStack:moin-cluster-all-playgrounds"
+            - apiGroup: rbac.authorization.k8s.io
+              kind: Group
+              name: "oidc:sovereigncloudstack/moin-cluster"
+    #- name: generate-kamaji-clusterstack
+    #  match:
+    #    any:
+    #      - resources:
+    #          kinds:
+    #            - Namespace
+    #          names:
+    #            - "*playground*"
+    #  generate:
+    #    apiVersion: clusterstack.x-k8s.io/v1alpha1
+    #    data:
+    #      metadata:
+    #        name: kamaji
+    #        namespace: "{{request.object.metadata.name}}"
+    #      spec:
+    #        provider: openstack
+    #        name: kamaji
+    #        kubernetesVersion: "1.30"
+    #        channel: stable
+    #        autoSubscribe: false
+    #        providerRef:
+    #          apiVersion: infrastructure.clusterstack.x-k8s.io/v1alpha1
+    #          kind: OpenStackClusterStackReleaseTemplate
+    #          name: cspotemplate
+    #        versions:
+    #          - v0-sha.frco630
+    #    kind: ClusterStack
+    #    name: kamaji
+    #    namespace: "{{request.object.metadata.name}}"
+    #    synchronize: true

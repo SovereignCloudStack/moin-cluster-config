@@ -4,21 +4,26 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     external-dns.alpha.kubernetes.io/hostname: viz.moin.k8s.scs.community
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      location /debug {
+        deny all;
+        return 403;
+      }
   name: capi-visualizer
   namespace: capi-visualizer
 spec:
   ingressClassName: nginx
   rules:
-  - host: viz.moin.k8s.scs.community
-    http:
-      paths:
-      - backend:
-          service:
-            name: capi-visualizer
-            port:
-              number: 8081
-        pathType: ImplementationSpecific
+    - host: viz.moin.k8s.scs.community
+      http:
+        paths:
+          - backend:
+              service:
+                name: capi-visualizer
+                port:
+                  number: 8081
+            pathType: ImplementationSpecific
   tls:
-  - hosts:
-    - viz.moin.k8s.scs.community
-    secretName: moin-api
+    - hosts:
+        - viz.moin.k8s.scs.community
+      secretName: moin-api

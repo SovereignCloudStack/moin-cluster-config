@@ -5,6 +5,7 @@ resources:
   - prod-cso-config-ks.yaml
   - prod-cspo-config-ks.yaml
   - prod-cert-manager-config-ks.yaml
+  - prod-dex-installation-ks.yaml
   - prod-external-dns-installation-ks.yaml
   - prod-ingress-nginx-config-ks.yaml
   - prod-ingress-nginx-installation-ks.yaml
@@ -13,3 +14,4 @@ resources:
   - prod-velero-installation-ks.yaml
   - prod-cluster-gen-installation-ks.yaml
   - prod-monitoring-installation-ks.yaml
+  - prod-crossplane-installation-ks.yaml
